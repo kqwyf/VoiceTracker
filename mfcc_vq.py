@@ -5,7 +5,9 @@ import numpy as np
 import pickle
 import librosa
 
-EPS=1e-1
+EPS=1e-1 #失真差阈值
+N_MFCC=20 #MFCC系数个数
+V_RATE=0.2 #人声阈值，即波形幅值高于最大值的V_RATE倍的区域被认为是人声
 
 def dist2(vec1,vec2): #求两向量距离平方
     return np.linalg.norm(vec1-vec2)**2
@@ -67,15 +69,20 @@ class VQ:
                 self.p[index][i]+=1
         for i in range(cv_num): #求概率
             self.p[i]/=np.linalg.norm(self.p[i])
-    def test(self,mfcc): #进行测试，每次输入1个向量
+    def test_vec(self,mfcc): #进行测试，每次输入1个向量
         '''
         mfcc:待测梅尔频率倒谱系数向量，维数为K
         '''
-        p=np.zeros(shape=len(names),dtype=np.float) #识别结果概率向量
+        p=np.zeros(shape=len(self.names),dtype=np.float) #识别结果概率向量
         for i in range(len(self.cv)): #对每个码矢进行计算
             p+=self.cv[i]*exp(-np.linalg.norm(mfcc-self.cv[i])) #根据距离加权计算概率和
         p/=np.linalg.norm(p) #标准化概率向量
         return p
+    def test(self,mfcc): #进行测试，每次输入同一声源的一组MFCC向量
+        '''
+        mfcc:待测N*K梅尔频率到谱向量列表，N为帧数，K为维数
+        '''
+        return sum([self.test_vec(mfcc_vec) for mfcc_vec in mfcc])/len(mfcc)
 
 def list_wavs(path): #获得目录下所有wav文件有序列表
     files=[file for file in os.listdir(path) if os.path.isfile(os.path.join(path,file)) and file[-4:]=='.wav']
@@ -84,9 +91,23 @@ def list_wavs(path): #获得目录下所有wav文件有序列表
 
 def train(vq,path): #训练模型
     files=list_wavs(path) #读取wav文件列表
+    files=[(filename.split("_")[0],filename) for filename in files] # 切割文件名，获取身份
+    names=list(set([filesplit[0] for filesplit in files])) #获取身份列表
+    mfcc_dic=dict() #每个人的MFCC表
+    for name in names:
+        mfcc_dic[name]=[]
+    for filesplit in files: #统计每个人的MFCC表
+        y,sr=librosa.load(os.path.join(path,filesplit[1])) #读取音频波形
+        mfcc_dic[filesplit[0]]+=list(librosa.feature.mfcc(y,sr,n_mfcc=N_MFCC).T) #计算MFCC并加入MFCC表
+    mfcc=[mfcc_dic[name] for name in names] #生成训练用MFCC表
+    vq.train(mfcc,names) #开始训练
 
 def test(vq,path): #测试模型
     files=list_wavs(path) #读取wav文件列表
+    for filename in files:
+        y,sr=librosa.load(os.path.join(path,filename)) #读取待测波形
+        mfcc=librosa.feature.mfcc(y,sr,n_mfcc=N_MFCC).T; #计算各帧MFCC
+        print("文件 %s 经辨识为 %s"%(filename,vq.names[np.argmax(vq.test(mfcc))]))
 
 def main():
     print('''MFCC & VQ Voice Tracker
