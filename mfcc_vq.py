@@ -13,14 +13,15 @@ def dist2(vec1,vec2): #求两向量距离平方
 def dot(k,l): #列表数乘
     return [k*l[i] for i in range(len(l))]
 
-def VQ:
+class VQ:
     def __init__(self):
         self.cv=None #码矢列表
         self.name="NoName" #模型名称
+        self.names=None #身份序列
         self.p=None #模型概率表（训练结果）
     def lbg(self,data,cv_num,eps=EPS): #LBG算法
         '''
-        data:训练矢量(np.array)列表
+        data:训练矢量表(n*k二维np.ndarray，n为矢量数，k为矢量维数)
         cv_num:期望码书大小
         eps:失真阈值差
         '''
@@ -30,8 +31,8 @@ def VQ:
         D=sum([dist2(data[i],self.cv[0]) for i in range(M)])/(M*k) #计算失真度
         print("初始失真度:%f"%(D))
         while len(self.cv)<cv_num: #在码本大小达到期望前不断分裂
-            self.cv=(dot(1+eps,self.cv)+dot(1-eps,*self.cv)) #分裂码矢
-            new_D=sum([(dist2(data[son[i][j]],self.cv[i]) for j in range(len(son[i])) if len(son[i]>0 else 0)) for i in range(len(son))]) #计算分裂后的新失真度
+            self.cv=(dot(1+eps,self.cv)+dot(1-eps,self.cv)) #分裂码矢
+            new_D=sum([(sum([dist2(data[son[i][j]],self.cv[i]) for j in range(len(son[i]))]) if len(son[i]>0) else 0) for i in range(len(son))]) #计算分裂后的新失真度
             while True: #当失真改进量大于阈值时不断更新码矢以减小失真度
                 D=new_D
                 son=[[]*len(self.cv)] #准备统计每个码矢代表哪些数据
@@ -40,19 +41,33 @@ def VQ:
                     son[index]+=i #将数据i分配给码矢index
                 for i in range(len(self.cv)): #更新每个码矢
                     self.cv[i]=sum([data[son[i][j]] for j in range(len(son[i]))])/len(son[i]) if len(son[i])>0 else 0 #将属于该码矢的所有向量的均值作为新码矢
-                new_D=sum([(dist2(data[son[i][j]],self.cv[i]) for j in range(len(son[i])) if len(son[i]>0 else 0)) for i in range(len(son))]) #计算新失真度
+                new_D=sum([(sum([dist2(data[son[i][j]],self.cv[i]) for j in range(len(son[i]))]) if len(son[i]>0) else 0) for i in range(len(son))]) #计算新失真度
                 print("失真度:%f"%(new_D))
                 if abs(D-new_D)<=eps:
                     break #当失真改进量小于阈值时退出
             print("码本大小:%d"%(len(self.cv)))
-    def train(self,mfcc): #训练模型
+    def train(self,mfcc,names): #训练模型
         '''
-        mfcc:P*T*N梅尔频率倒谱系数表，P为人数，T为帧数，N为系数个数。
+        mfcc:P*T*N梅尔频率倒谱系数表(list(list(np.ndarray))，P为人数，T为帧数，N为系数个数)
         例如mfcc[i][j][k]表示第i个人的语音第j帧的梅尔频率倒谱系数中第k个系数。
         同一人的语音可拼接后传入。
+        names:身份（人名）序列，长度为P
         '''
-        
-
+        cv_num=0
+        self.names=names
+        P=len(mfcc)
+        N=len(mfcc[0][0])
+        while 2**cv_num<P: #求出合适的码本大小
+            cv_num+=1
+        self.p=np.zeros(shape=(cv_num,P),dtype=np.float) #初始化模型概率表
+        data=np.array(sum(mfcc))#获得训练矢量表
+        self.lbg(data,cv_num,EPS) #使用LBG算法训练
+        for i in range(P): #对于每个码矢，统计其代表不同人的频数
+            for j in range(len(mfcc[i])):
+                index=np.argmin([np.linalg.norm(self.cv[k]-mfcc[i][j]) for k in range(cv_num)])
+                self.p[index][i]+=1
+        for i in range(cv_num): #求概率
+            self.p[i]/=np.linalg.norm(self.p[i])
 
 def list_wavs(path): #获得目录下所有wav文件有序列表
     files=[file for file in os.listdir(path) if os.path.isfile(os.path.join(path,file)) and file[-4:]=='.wav']
