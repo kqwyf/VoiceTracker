@@ -48,7 +48,7 @@ class VQ:
             print("码本大小:%d"%(len(self.cv)))
     def train(self,mfcc,names): #训练模型
         '''
-        mfcc:P*T*N梅尔频率倒谱系数表(list(list(np.ndarray))，P为人数，T为帧数，N为系数个数)
+        mfcc:P*T*N梅尔频率倒谱系数表(list(list(np.ndarray))，P为人数，T为帧数，K为系数个数)
         例如mfcc[i][j][k]表示第i个人的语音第j帧的梅尔频率倒谱系数中第k个系数。
         同一人的语音可拼接后传入。
         names:身份（人名）序列，长度为P
@@ -56,7 +56,6 @@ class VQ:
         cv_num=0
         self.names=names
         P=len(mfcc)
-        N=len(mfcc[0][0])
         while 2**cv_num<P: #求出合适的码本大小
             cv_num+=1
         self.p=np.zeros(shape=(cv_num,P),dtype=np.float) #初始化模型概率表
@@ -68,6 +67,15 @@ class VQ:
                 self.p[index][i]+=1
         for i in range(cv_num): #求概率
             self.p[i]/=np.linalg.norm(self.p[i])
+    def test(self,mfcc): #进行测试，每次输入1个向量
+        '''
+        mfcc:待测梅尔频率倒谱系数向量，维数为K
+        '''
+        p=np.zeros(shape=len(names),dtype=np.float) #识别结果概率向量
+        for i in range(len(self.cv)): #对每个码矢进行计算
+            p+=self.cv[i]*exp(-np.linalg.norm(mfcc-self.cv[i])) #根据距离加权计算概率和
+        p/=np.linalg.norm(p) #标准化概率向量
+        return p
 
 def list_wavs(path): #获得目录下所有wav文件有序列表
     files=[file for file in os.listdir(path) if os.path.isfile(os.path.join(path,file)) and file[-4:]=='.wav']
@@ -76,7 +84,6 @@ def list_wavs(path): #获得目录下所有wav文件有序列表
 
 def train(vq,path): #训练模型
     files=list_wavs(path) #读取wav文件列表
-
 
 def test(vq,path): #测试模型
     files=list_wavs(path) #读取wav文件列表
