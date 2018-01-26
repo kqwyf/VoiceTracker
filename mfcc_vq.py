@@ -4,16 +4,26 @@ import os
 import numpy as np
 import pickle
 import librosa
+import math
+import matplotlib.pyplot as plt
 
-EPS=1e-1 #失真差阈值
-N_MFCC=20 #MFCC系数个数
+EPS=1e-3 #失真差阈值
+N_MFCC=2 #MFCC系数个数
 V_RATE=0.2 #人声阈值，即波形幅值高于最大值的V_RATE倍的区域被认为是人声
 
 def dist2(vec1,vec2): #求两向量距离平方
     return np.linalg.norm(vec1-vec2)**2
 
 def dot(k,l): #列表数乘
-    return [k*l[i] for i in range(len(l))]
+    return [k*item for item in l]
+
+def lsum(l): #列表求和
+    if l==None or len(l)==0:
+        return 0
+    ans=l[0]
+    for i in l:
+        ans+=i
+    return ans
 
 class VQ:
     def __init__(self):
@@ -29,21 +39,21 @@ class VQ:
         '''
         M=len(data) #训练数据量
         k=len(data[0]) #训练矢量维数
-        self.cv=[sum(data)/m] #初始码本为所有训练数据平均值
+        self.cv=[sum(data)/M] #初始码本为所有训练数据平均值
         D=sum([dist2(data[i],self.cv[0]) for i in range(M)])/(M*k) #计算失真度
         print("初始失真度:%f"%(D))
         while len(self.cv)<cv_num: #在码本大小达到期望前不断分裂
             self.cv=(dot(1+eps,self.cv)+dot(1-eps,self.cv)) #分裂码矢
-            new_D=sum([(sum([dist2(data[son[i][j]],self.cv[i]) for j in range(len(son[i]))]) if len(son[i]>0) else 0) for i in range(len(son))]) #计算分裂后的新失真度
+            new_D=D#new_D=sum([(sum([dist2(data[son[i][j]],self.cv[i]) for j in range(len(son[i]))]) if len(son[i]>0) else 0) for i in range(len(son))]) #计算分裂后的新失真度
             while True: #当失真改进量大于阈值时不断更新码矢以减小失真度
                 D=new_D
-                son=[[]*len(self.cv)] #准备统计每个码矢代表哪些数据
+                son=[[] for i in range(len(self.cv))] #准备统计每个码矢代表哪些数据
                 for i in range(len(data)): #为每个数据分配码矢
-                    index=np.argmin([np.linalg.norm(self.cv[j]-data[i]) for j in range(len(self.cv))]) #找出与其距离最近的码矢
-                    son[index]+=i #将数据i分配给码矢index
+                    index=np.argmin([np.linalg.norm(v-data[i]) for v in self.cv]) #找出与其距离最近的码矢
+                    son[index]+=[i] #将数据i分配给码矢index
                 for i in range(len(self.cv)): #更新每个码矢
-                    self.cv[i]=sum([data[son[i][j]] for j in range(len(son[i]))])/len(son[i]) if len(son[i])>0 else 0 #将属于该码矢的所有向量的均值作为新码矢
-                new_D=sum([(sum([dist2(data[son[i][j]],self.cv[i]) for j in range(len(son[i]))]) if len(son[i]>0) else 0) for i in range(len(son))]) #计算新失真度
+                    self.cv[i]=sum([data[son[i][j]] for j in range(len(son[i]))])/len(son[i]) if len(son[i])>0 else np.array(shape=k,dtype=np.float) #将属于该码矢的所有向量的均值作为新码矢
+                new_D=sum([(sum([dist2(data[son[i][j]],self.cv[i]) for j in range(len(son[i]))]) if len(son[i])>0 else np.array(shape=k,dtype=np.float)) for i in range(len(son))])/(M*k) #计算新失真度
                 print("失真度:%f"%(new_D))
                 if abs(D-new_D)<=eps:
                     break #当失真改进量小于阈值时退出
@@ -55,13 +65,13 @@ class VQ:
         同一人的语音可拼接后传入。
         names:身份（人名）序列，长度为P
         '''
-        cv_num=0
+        cv_num=1
         self.names=names
         P=len(mfcc)
-        while 2**cv_num<P: #求出合适的码本大小
-            cv_num+=1
+        while cv_num<P: #求出合适的码本大小
+            cv_num*=2
         self.p=np.zeros(shape=(cv_num,P),dtype=np.float) #初始化模型概率表
-        data=np.array(sum(mfcc))#获得训练矢量表
+        data=np.array(lsum(mfcc)) #获得训练矢量表
         self.lbg(data,cv_num,EPS) #使用LBG算法训练
         for i in range(P): #对于每个码矢，统计其代表不同人的频数
             for j in range(len(mfcc[i])):
@@ -75,7 +85,7 @@ class VQ:
         '''
         p=np.zeros(shape=len(self.names),dtype=np.float) #识别结果概率向量
         for i in range(len(self.cv)): #对每个码矢进行计算
-            p+=self.cv[i]*exp(-np.linalg.norm(mfcc-self.cv[i])) #根据距离加权计算概率和
+            p+=self.p[i]*math.exp(-np.linalg.norm(mfcc-self.cv[i])) #根据距离加权计算概率和
         p/=np.linalg.norm(p) #标准化概率向量
         return p
     def test(self,mfcc): #进行测试，每次输入同一声源的一组MFCC向量
@@ -93,20 +103,35 @@ def train(vq,path): #训练模型
     files=list_wavs(path) #读取wav文件列表
     files=[(filename.split("_")[0],filename) for filename in files] # 切割文件名，获取身份
     names=list(set([filesplit[0] for filesplit in files])) #获取身份列表
+    names.sort() #对身份列表进行排序
     mfcc_dic=dict() #每个人的MFCC表
     for name in names:
         mfcc_dic[name]=[]
     for filesplit in files: #统计每个人的MFCC表
         y,sr=librosa.load(os.path.join(path,filesplit[1])) #读取音频波形
-        mfcc_dic[filesplit[0]]+=list(librosa.feature.mfcc(y,sr,n_mfcc=N_MFCC).T) #计算MFCC并加入MFCC表
+        maxy=max(y)
+        mfcc=list(librosa.feature.mfcc(y,sr,n_mfcc=N_MFCC).T)
+        mfcc=[mfcc_vec for mfcc_vec in mfcc if np.max(mfcc_vec)>V_RATE*maxy]
+        mfcc_dic[filesplit[0]]+=mfcc #计算MFCC并加入MFCC表
     mfcc=[mfcc_dic[name] for name in names] #生成训练用MFCC表
+    colors=['b','g','r','c','m','y','k','w']
+    for i in range(len(mfcc)):
+        plt.scatter([x[0] for x in mfcc[i]],[x[1] for x in mfcc[i]],c=colors[i])
+    plt.show()
     vq.train(mfcc,names) #开始训练
+    for i in vq.p:
+        print(i)
+    for i in vq.cv:
+        print(i)
 
 def test(vq,path): #测试模型
     files=list_wavs(path) #读取wav文件列表
     for filename in files:
         y,sr=librosa.load(os.path.join(path,filename)) #读取待测波形
+        maxy=max(y)
         mfcc=librosa.feature.mfcc(y,sr,n_mfcc=N_MFCC).T; #计算各帧MFCC
+        mfcc=[mfcc_vec for mfcc_vec in mfcc if np.max(mfcc_vec)>V_RATE*maxy] #过滤非人声
+        print(vq.test(mfcc))
         print("文件 %s 经辨识为 %s"%(filename,vq.names[np.argmax(vq.test(mfcc))]))
 
 def main():
