@@ -55,7 +55,7 @@ def window(s,win):
     return x
 s0=[(s[START+i] if i<M else 0) for i in range(win_length)]
 x=window(s0,w1)
-#x=window(x,w2)
+x=window(x,w2)
 
 
 
@@ -100,7 +100,7 @@ gh=np.fft.ifft(Eh)
 此处强行把复数转为实数，去掉了虚部。但论文中没有提到这一点。
 可能出现问题。
 '''
-hngd=[math.sqrt(g[i]**2+gh[i]**2) for i in range(lenE)]
+hngd=[math.sqrt(g[i]**2+gh[i].real**2) for i in range(lenE)]
 ##### MAY BE WRONG #####
 
 
