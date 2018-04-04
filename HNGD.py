@@ -20,6 +20,9 @@ for i in range(n-1,-1,-1):
     s[i]=a[i]-(a[i-1] if i>0 else 0)
 
 ##### no usage #####
+'''
+这些量在论文里有计算，但是从论文提供的算法来看从来没有用到过。
+'''
 y1=[0]*n
 for i in range(n-1,-1,-1):
     y1[i]=(2*y1[i-1] if i>0 else 0)-(y1[i-2] if i>1 else 0)+s[i]
@@ -82,6 +85,11 @@ E=np.fft.fft(e)
 lenE=len(E)
 
 ##### MAY BE WRONG #####
+'''
+论文中在求E_h(\omega)时，\omega的取值范围是(-\pi,\pi)，
+但实际上E(\omega)是DFT(g[n])，\omega的范围应为(0,2\pi)。
+此处把论文中原式的(-\pi,0)映射到了(\pi,2\pi)
+'''
 Eh=[(complex(0,-1)*E[i] if i<lenE//2 else complex(0,1)*E[i]) for i in range(lenE)]
 ##### MAY BE WRONG #####
 
