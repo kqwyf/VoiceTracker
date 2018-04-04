@@ -97,13 +97,12 @@ gh=np.fft.ifft(Eh)
 
 ##### MAY BE WRONG #####
 '''
-此处强行把复数转为实数，去掉了虚部。但论文中没有提到这一点。
+此处把“复数的平方”理解为“复数的模长的平方”，但论文中没有提到这一点。
 可能出现问题。
 '''
-hngd=[math.sqrt(g[i]**2+gh[i].real**2) for i in range(lenE)]
+hngd=[math.sqrt(g[i]**2+gh[i].real**2+gh[i].imag**2) for i in range(lenE)]
 ##### MAY BE WRONG #####
-
-
+hngd=hngd[0:lenE//2]
 
 print("finished")
 #plt.plot(list(range(n)),a)
