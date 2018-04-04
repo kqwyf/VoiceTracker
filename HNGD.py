@@ -94,7 +94,14 @@ Eh=[(complex(0,-1)*E[i] if i<lenE//2 else complex(0,1)*E[i]) for i in range(lenE
 ##### MAY BE WRONG #####
 
 gh=np.fft.ifft(Eh)
+
+##### MAY BE WRONG #####
+'''
+此处强行把复数转为实数，去掉了虚部。但论文中没有提到这一点。
+可能出现问题。
+'''
 hngd=[math.sqrt(g[i]**2+gh[i]**2) for i in range(lenE)]
+##### MAY BE WRONG #####
 
 
 
