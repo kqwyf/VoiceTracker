@@ -18,7 +18,8 @@ def sshVUV(sshVal, H, fs, N):
     diffShhVal = np.diff(sshVUV)  # Take the difference of signal
     diffShhVal = np.append(diffShhVal, diffShhVal[-1])  # Adjust the signal length
 
-    begVoic = np.where(diffShhVal == 1)[0]  # Values = 1 in diffSgfiltEpssp1 corresponds to the beg. instant of voiced segment
+    begVoic = np.where(diffShhVal == 1)[
+        0]  # Values = 1 in diffSgfiltEpssp1 corresponds to the beg. instant of voiced segment
 
     endVoic = np.where(diffShhVal == -1)[0]  # Values = -1 corresponds to UV regions
 

@@ -21,7 +21,7 @@ def getSinusoids(x, fs):
     N = 1024
     H = M / 4
     window = 'hamming'
-    w = get_window(window, M)
+    w = get_window(window, int(M))
 
     # Computing STFT magnitude and phase of the signal
     mx, px = stft.stftAnal(x, fs, w, N, H)  # mx and px are the magnitude and phase spectrum
@@ -35,12 +35,12 @@ def getSinusoids(x, fs):
     mX1 = np.zeros(N)
     hamWin = np.hamming(M)
     hamWin = hamWin / sum(hamWin)
-    fftbuffer[hN - hM:hN + hM] = hamWin
+    fftbuffer[int(hN - hM): int(hN + hM)] = hamWin
 
     X = fft(fftbuffer)
     mXDb = 20 * np.log10(abs(X))
-    mX1[:hN] = mXDb[hN:]
-    mX1[N - hN:] = mXDb[:hN]
+    mX1[:int(hN)] = mXDb[int(hN):]
+    mX1[N - int(hN):] = mXDb[:int(hN)]
     mXLinear = 10 ** (mX1 / 20.0)
     hamMainLobe = mXLinear[507:518]
     # -------------------------------------------------------------------------------- #
@@ -51,23 +51,26 @@ def getSinusoids(x, fs):
     sinThresh = 0.6
     t = 0.001
 
-    detSinusoids = np.zeros([np.shape(mxLinear)[0], maxBinFreq])
+    detSinusoids = np.zeros([np.shape(mxLinear)[0], int(maxBinFreq)])
 
     # for i in range(np.shape(mxLinear)[0]):
     for i in range(np.shape(mxLinear)[0]):
-        tempMag = mxLinear[i, :maxBinFreq]
+        tempMag = mxLinear[i, :int(maxBinFreq)]
         ploc = pdc.peakDetection(tempMag, t)  # detect peak locations
         collS = np.array([])
         # Peak locations are available, now compute similarity between the measured and the ideal sinusoid(spectrum of hamming window)
-        index = np.where(ploc <= widthHalfHamMainLobe)[0]  # Remove the index which is less than length of half main lobe for correct indexing
+        index = np.where(ploc <= widthHalfHamMainLobe)[
+            0]  # Remove the index which is less than length of half main lobe for correct indexing
         ploc = np.delete(ploc, index)
-        index = np.where(ploc > (maxBinFreq - (widthHalfHamMainLobe + 1)))[0]  # Remove plocation which is close to maxfrequency bin considered
+        index = np.where(ploc > (maxBinFreq - (widthHalfHamMainLobe + 1)))[
+            0]  # Remove plocation which is close to maxfrequency bin considered
         ploc = np.delete(ploc, index)
 
         for j in range(np.size(ploc)):
             begSilce = ploc[j] - widthHalfHamMainLobe
             endSilce = ploc[j] + widthHalfHamMainLobe + 1
-            measuredSin = tempMag[begSilce:endSilce]
+            endSilce = len(hamMainLobe) + int(begSilce)
+            measuredSin = tempMag[int(begSilce):endSilce]
             Am = np.sum(hamMainLobe * measuredSin)
             mainLobeEng = np.sum(np.power(hamMainLobe, 2))
             Am = Am / mainLobeEng
