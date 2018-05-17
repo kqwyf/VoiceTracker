@@ -1,3 +1,58 @@
+IdMap
+用于在两个（长度相等的）字符串列表间建立映射。列表内元素可相等。一般用于存储音频片段名称与对应话者名称的映射。IdMap同时还包含了start和stop两个向量以方便存储音频区间位置。
+使用样例：
+idmap = sidekit.IdMap()
+idmap.leftids = numpy.array(["model_1", "model_2", "model_2"])
+idmap.rightids = numpy.array(["segment_1", "segment_2", "segment_3"])
+idmap.start = numpy.empty((3), dtype="|O") #这里不知道这个dtype是什么乱码，我猜是int
+idmap.stop = numpy.empty((3), dtype="|O")
+
+Ndx
+用于表示哪些模型和音频片段之间的试验会被进行。
+方法是给定一个模型名称列表（长度m）和一个音频片段名称列表（长度n），再给定一个m*n布尔矩阵。
+使用样例：
+ndx = sidekit.Ndx()
+ndx.modelset = numpy.array(["model_1", "model_2"])
+ndx.segset = numpy.array(["segment_1", "segment_2", "segment_3"])
+ndx.trialmask = numpy.ones((2,3), dtype='bool')
+
+Keys
+与Ndx相似，用于表示哪些模型和音频片段之间的试验是目标试验，哪些是假冒试验（impostor trail）
+同样给定两个名称列表，然后给两个布尔矩阵tar和non即可。
+（关于这两种试验的区别并不清楚）
+使用样例：
+key = sidekit.Key()
+key.modelset = ndx.modelset
+key.segset = ndx.segset
+key.tar = numpy.zeros((2,3), dtype='bool')
+key.tar[0, 0] = True
+key.tar[1:, 1:] = True
+key.non = numpy.zeros((2,3), dtype='bool')
+key.non[0, 1:] = True
+key.non[1, 0] = True
+
+上述所有类都可使用.validate()方法检查数据是否合法
+
+Scores
+与Keys相似，用于表示模型和音频片段之间试验的得分。
+同样给定两个名称列表，此外还有一个布尔矩阵scoremask和浮点矩阵scoremat。
+没有样例。
+
+StatServer
+用于储存和处理统计数据。
+包含参数有：
+模型名称列表modelset
+音频片段名称列表segset（可指音频片段的单词有segment，show和session）
+开始时间向量start
+结束时间向量stop
+0阶统计量stat0
+1阶统计量stat1（在SIDEKIT中，i-vector和super-vector被认为是1阶统计量）
+
+注：当StatServer被用于存储i-vector和super-vector的时候，StatServer.stat1存储的是刚刚说的vector，而StatServer.stat0存储的是用于估计i-vector或super-vector的segment的数量。
+再注：6个参数第一维的长度必须相同。stat1的第二维长度必须是stat0第二维长度的倍数。通常来说，stat0.shape[1]是一个GMM的分布数，stat1.shape[1]是分布数乘以声学特征数。
+三注：StatServer通常使用IdMap进行实例化
+
+
 HDF5格式
 sidekit使用的音频特征保存格式
 
@@ -39,7 +94,7 @@ extractor.save("taaa")  #上述文件名中的"{}"将被替换为"taaa"。该行
 fh=extracor,extract()   #若不想存储至HDF5文件，可通过此行直接获取一个HDF5文件句柄
 extractor.save_list(show_list=["taaa","taaf"],
                     channel_list=[0,0],
-					num_thread=10)            #批量多线程处理多个文
+					num_thread=10)            #批量多线程处理多个文件
 若extractor的输入输出格式均留空(None)，则save时可以设置input_audio_filename和output_feature_filename来单独指定输入输出文件名
 
 
@@ -92,6 +147,92 @@ server.load(show= #不知道这个show是什么意思
 
 
 UBM模型训练
-
+步骤：1.创建一个Mixture
+      2.进行EM训练
+代码：
+ubm=sidekit.Mixture()
+ubm.EM_split(features_server=fs,						#FeaturesServer对象
+             feature_list=ubm_list,						#
+			 distrib_nb=1024                            #期望得到的分布数量(必须为2的幂)
+			 iterations=(1,2,2,4,4,4,4,8,8,8,8,8,8),	#第i个元素表示对于size为2^i的模型的迭代次数
+			 num_thread=10,								#线程数
+			 save_partial=False,						#是否每次迭代后保存模型
+			 ceil_cov=10,								#用于控制方差
+			 floor_cov=1e-2								#用于控制方差
+		     )
+训练固定数量的分布
+ubm.EM_uniform(cep					#一个ndarray，每一行是一种特征
+		       distrib_nb,
+			   iteration_min=3,
+			   iteration_max=10,
+			   llk_gain=0.01,
+			   do_init=True
+		       )
+训练Full covariance UBM（满方差UBM？）
+即在EM_split后增加：
+ubm.EM_convert_full(features_server,
+		            featureList,
+					distrib_nb,
+					iterations=2,		#EM迭代次数
+					num_thread=10
+		            )
 
 i-vector提取器训练
+Total Variability models(TV)通过sidekit的FactorAnalyser提供的EM算法进行训练。
+训练需要一个StatServer（见未翻译的第一节）和一个UBM（Mixture对象）
+有三种实现：
+total_variability_raw 基本的无优化实现
+total_variability_single 单线程有优化实现
+total_variability 并行有优化实现
+
+单线程有优化实现的使用：
+fa=sidekit.FactorAnalyser()
+fa.total_variability_single(stat_server_filename,	#list(str)，与StatServer关联的文件名
+		                    ubm,					#UBM模型
+							tv_rank,				#int，TV结果矩阵的秩，也即i-vector的大小
+							nb_iter,				#EM算法迭代次数
+							min_div=True,			#boolean，每次迭代是否包含一步“最小散度重估计”（没看懂）
+							tv_init=None,			#用于初始化训练的矩阵，None表示随机初始化
+							batch_size=300,			#每次处理的数量
+							save_init=False,		#是否保存初始模型
+							output_file_name=None	#输出文件名
+							)
+并行有优化实现的使用：
+fa=sidekit.FactorAnalyser()
+fa.total_variability(stat_server_filename,	#list(str)，与StatServer关联的文件名
+		             ubm,					#UBM模型
+					 tv_rank,				#int，TV结果矩阵的秩，也即i-vector的大小
+					 nb_iter,				#EM算法迭代次数
+					 min_div=True,			#boolean，每次迭代是否包含一步“最小散度重估计”（没看懂）
+					 tv_init=None,			#用于初始化训练的矩阵，None表示随机初始化
+					 batch_size=300,		#每次处理的数量
+				     save_init=False,		#是否保存初始模型
+					 output_file_name=None,	#输出文件名
+					 num_thread=1			#线程数，建议5-10之间
+					 )
+
+
+i-vector提取
+准备工作：
+Mixture ubm
+FeaturesServer features_server
+FactorAnalyser fa
+StatServer stat_server
+单线程样例：
+iv,iv_uncertainty=fa.extract_ivectors_single(ubm,
+		                                     stat_server,
+											 uncertainty=True
+											 )
+#当上面uncertainty=True时将返回一个矩阵，矩阵的每一行是与之对应的i-vector的不确定性矩阵的对角线
+#返回值iv是一个StatServer，在stat0中包含若干1，在stat1中包含若干i-vector
+
+单机多线程样例：
+#建议batch_size为几百
+iv,iv_uncertainty=fa.extract_ivectors(ubm,
+		                              stat_server_filename,	#包含一个StatServer的HDF5文件名
+									  prefix='',			#HDF5文件中统计数据集的前缀
+									  batch_size=300,		#每次处理的数量
+									  uncertainty=False,	#已提过
+									  num_thread=1			#线程数
+		                              )
+
