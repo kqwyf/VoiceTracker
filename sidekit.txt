@@ -1,0 +1,97 @@
+HDF5格式
+sidekit使用的音频特征保存格式
+
+FeaturesExtractor
+输入音频文件输出HDF5
+audio_filename_structure	准备读入的音频文件名（可格式化），格式化方法见样例
+feature_filename_structure	(str="{}")准备输出的特征文件名（可格式化）
+sampling_frequency			(int=8000)采样率
+lower_frequency				(float)滤波器频率下界
+higher_frequency			(float)滤波器频率上界
+filter_bank					(str)滤波器类型，"lin"为线性滤波，"log"为梅尔滤波
+filter_bank_size			滤波器组大小，即滤波器个数
+window_size					(float)FFT窗大小，单位为秒
+shift						(float)FFT窗间位移，单位为秒
+ceps_number					要计算的倒谱系数个数
+vad							(str)要使用的语音活动检测算法。"snr"/"energy"/"percentil"/"dnn"/"lbl"。"lbl"为从文件读取label
+snr							(float)SNR算法的参数
+pre_emphasis				(float=0.97)预加重过滤使用的值
+save_param					(list=["energy","cep","fb","bnf","vad"])准备向HDF5文件中存储的特征
+keep_all_features			(boolean)若false则仅存储VAD选择的特征帧，否则存储所有特征帧
+
+样例：
+extractor = sidekit.FeaturesExtractor(audio_filename_structure="audio/nist_2004/{}.sph",
+                                      feature_filename_structure="feat/sre04/{}.h5",
+                                      sampling_frequency=None,
+                                      lower_frequency=200,
+                                      higher_frequency=3800,
+                                      filter_bank="log",
+                                      filter_bank_size=24,
+                                      window_size=0.025,
+                                      shift=0.01,
+                                      ceps_number=20,
+                                      vad="snr",
+                                      snr=40,
+                                      pre_emphasis=0.97,
+                                      save_param=["vad", "energy", "cep", "fb"],
+                                      keep_all_features=True)
+extractor.save("taaa")  #上述文件名中的"{}"将被替换为"taaa"。该行将特征保存至文件taaa.h5
+fh=extracor,extract()   #若不想存储至HDF5文件，可通过此行直接获取一个HDF5文件句柄
+extractor.save_list(show_list=["taaa","taaf"],
+                    channel_list=[0,0],
+					num_thread=10)            #批量多线程处理多个文
+若extractor的输入输出格式均留空(None)，则save时可以设置input_audio_filename和output_feature_filename来单独指定输入输出文件名
+
+
+FeaturesServer
+读取HDF5文件并对特征进行后期处理，用于向sidekit中其它所有组件提供输入
+features_extractor			特征提取器（见上）
+feature_filename_structure	(str="{}")见上
+sources						(元组的元组)（没太懂）该参数仅用于数据集从不同文件中读取并拼接的情形
+dataset_list				(list(str))仅用于从单个文件中读取数据集时，表示要读取的特征（见样例）
+mask						(str)用于从连接而成的数据集中选取系数，格式样例："[1-3,10,15-20]"
+feat_norm					(str)要应用的正则化类型，"cmvn"/"cms"/"stg"
+global_cmvn					(boolean)若true则在正则化时使用全局均值和标准值（没写完）
+dct_pca						(boolean)若true则使用PCA-DCT方法添加临时上下文（没看懂）
+dct_pca_config				(tuple=(12,12,None))PCA-DCT的配置（没看懂）
+sdc							(boolean=False)若true，计算三角倒谱系数
+sdc_config					(tuple=(1,3,7))计算sdc系数的配置（没看懂）
+delta						(boolean=False)若true，追加一阶导数（没看懂）
+double_delta				(boolean=False)若true，追加二阶导数（没看懂）
+context						(tuple=(0,0))增加左右上下文（没看懂）
+traps_dct_nb				(int=0)计算TRAP系数时应保持的DCT系数的数量
+rasta						(boolean=False)若true，进行RASTA滤波
+keep_all_features			(boolean=True)若false，根据vad标签保留帧；否则保留所有帧
+
+样例：
+server = sidekit.FeaturesServer(features_extractor=None,
+                                feature_filename_structure="feat/sre04/{}.h5",
+                                sources=None,
+                                dataset_list=["energy", "cep", "vad"],
+                                mask="[0-12]",
+                                feat_norm="cmvn",
+                                global_cmvn=None,
+                                dct_pca=False,
+                                dct_pca_config=None,
+                                sdc=False,
+                                sdc_config=None,
+                                delta=True,
+                                double_delta=True,
+                                delta_filter=None,
+                                context=None,
+                                traps_dct_nb=None,
+                                rasta=True,
+                                keep_all_features=True)
+#依上述代码创建server之后可以如此使用
+server.load(show= #不知道这个show是什么意思
+            channel=0
+			input_feature_filename=""
+			label=
+			start=
+			stop=)
+
+
+UBM模型训练
+
+
+i-vector提取器训练
