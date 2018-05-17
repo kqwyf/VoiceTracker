@@ -58,21 +58,21 @@ sidekit使用的音频特征保存格式
 
 FeaturesExtractor
 输入音频文件输出HDF5
-audio_filename_structure	准备读入的音频文件名（可格式化），格式化方法见样例
-feature_filename_structure	(str="{}")准备输出的特征文件名（可格式化）
-sampling_frequency			(int=8000)采样率
-lower_frequency				(float)滤波器频率下界
-higher_frequency			(float)滤波器频率上界
-filter_bank					(str)滤波器类型，"lin"为线性滤波，"log"为梅尔滤波
-filter_bank_size			滤波器组大小，即滤波器个数
-window_size					(float)FFT窗大小，单位为秒
-shift						(float)FFT窗间位移，单位为秒
-ceps_number					要计算的倒谱系数个数
-vad							(str)要使用的语音活动检测算法。"snr"/"energy"/"percentil"/"dnn"/"lbl"。"lbl"为从文件读取label
-snr							(float)SNR算法的参数
-pre_emphasis				(float=0.97)预加重过滤使用的值
-save_param					(list=["energy","cep","fb","bnf","vad"])准备向HDF5文件中存储的特征
-keep_all_features			(boolean)若false则仅存储VAD选择的特征帧，否则存储所有特征帧
+audio_filename_structure        准备读入的音频文件名（可格式化），格式化方法见样例
+feature_filename_structure      (str="{}")准备输出的特征文件名（可格式化）
+sampling_frequency              (int=8000)采样率
+lower_frequency                 (float)滤波器频率下界
+higher_frequency                (float)滤波器频率上界
+filter_bank                     (str)滤波器类型，"lin"为线性滤波，"log"为梅尔滤波
+filter_bank_size                滤波器组大小，即滤波器个数
+window_size                     (float)FFT窗大小，单位为秒
+shift                           (float)FFT窗间位移，单位为秒
+ceps_number                     要计算的倒谱系数个数
+vad                             (str)要使用的语音活动检测算法。"snr"/"energy"/"percentil"/"dnn"/"lbl"。"lbl"为从文件读取label
+snr                             (float)SNR算法的参数
+pre_emphasis                    (float=0.97)预加重过滤使用的值
+save_param                      (list=["energy","cep","fb","bnf","vad"])准备向HDF5文件中存储的特征
+keep_all_features               (boolean)若false则仅存储VAD选择的特征帧，否则存储所有特征帧
 
 样例：
 extractor = sidekit.FeaturesExtractor(audio_filename_structure="audio/nist_2004/{}.sph",
@@ -94,29 +94,29 @@ extractor.save("taaa")  #上述文件名中的"{}"将被替换为"taaa"。该行
 fh=extracor,extract()   #若不想存储至HDF5文件，可通过此行直接获取一个HDF5文件句柄
 extractor.save_list(show_list=["taaa","taaf"],
                     channel_list=[0,0],
-					num_thread=10)            #批量多线程处理多个文件
+                    num_thread=10)            #批量多线程处理多个文件
 若extractor的输入输出格式均留空(None)，则save时可以设置input_audio_filename和output_feature_filename来单独指定输入输出文件名
 
 
 FeaturesServer
 读取HDF5文件并对特征进行后期处理，用于向sidekit中其它所有组件提供输入
-features_extractor			特征提取器（见上）
-feature_filename_structure	(str="{}")见上
-sources						(元组的元组)（没太懂）该参数仅用于数据集从不同文件中读取并拼接的情形
-dataset_list				(list(str))仅用于从单个文件中读取数据集时，表示要读取的特征（见样例）
-mask						(str)用于从连接而成的数据集中选取系数，格式样例："[1-3,10,15-20]"
-feat_norm					(str)要应用的正则化类型，"cmvn"/"cms"/"stg"
-global_cmvn					(boolean)若true则在正则化时使用全局均值和标准值（没写完）
-dct_pca						(boolean)若true则使用PCA-DCT方法添加临时上下文（没看懂）
-dct_pca_config				(tuple=(12,12,None))PCA-DCT的配置（没看懂）
-sdc							(boolean=False)若true，计算三角倒谱系数
-sdc_config					(tuple=(1,3,7))计算sdc系数的配置（没看懂）
-delta						(boolean=False)若true，追加一阶导数（没看懂）
-double_delta				(boolean=False)若true，追加二阶导数（没看懂）
-context						(tuple=(0,0))增加左右上下文（没看懂）
-traps_dct_nb				(int=0)计算TRAP系数时应保持的DCT系数的数量
-rasta						(boolean=False)若true，进行RASTA滤波
-keep_all_features			(boolean=True)若false，根据vad标签保留帧；否则保留所有帧
+features_extractor              特征提取器（见上）
+feature_filename_structure      (str="{}")见上
+sources                         (元组的元组)（没太懂）该参数仅用于数据集从不同文件中读取并拼接的情形
+dataset_list                    (list(str))仅用于从单个文件中读取数据集时，表示要读取的特征（见样例）
+mask                            (str)用于从连接而成的数据集中选取系数，格式样例："[1-3,10,15-20]"
+feat_norm                       (str)要应用的正则化类型，"cmvn"/"cms"/"stg"
+global_cmvn                     (boolean)若true则在正则化时使用全局均值和标准值（没写完）
+dct_pca                         (boolean)若true则使用PCA-DCT方法添加临时上下文（没看懂）
+dct_pca_config                  (tuple=(12,12,None))PCA-DCT的配置（没看懂）
+sdc                             (boolean=False)若true，计算三角倒谱系数
+sdc_config                      (tuple=(1,3,7))计算sdc系数的配置（没看懂）
+delta                           (boolean=False)若true，追加一阶导数（没看懂）
+double_delta                    (boolean=False)若true，追加二阶导数（没看懂）
+context                         (tuple=(0,0))增加左右上下文（没看懂）
+traps_dct_nb                    (int=0)计算TRAP系数时应保持的DCT系数的数量
+rasta                           (boolean=False)若true，进行RASTA滤波
+keep_all_features               (boolean=True)若false，根据vad标签保留帧；否则保留所有帧
 
 样例：
 server = sidekit.FeaturesServer(features_extractor=None,
@@ -138,12 +138,13 @@ server = sidekit.FeaturesServer(features_extractor=None,
                                 rasta=True,
                                 keep_all_features=True)
 #依上述代码创建server之后可以如此使用
-server.load(show= #不知道这个show是什么意思
-            channel=0
-			input_feature_filename=""
-			label=
-			start=
-			stop=)
+server.load(show= #show在第一节提到过就是segment的意思
+            channel=0
+	    input_feature_filename=""
+            label=
+            start=
+	    stop=
+	    )
 
 
 UBM模型训练
@@ -151,35 +152,35 @@ UBM模型训练
       2.进行EM训练
 代码：
 ubm=sidekit.Mixture()
-ubm.EM_split(features_server=fs,						#FeaturesServer对象
-             feature_list=ubm_list,						#
-			 distrib_nb=1024                            #期望得到的分布数量(必须为2的幂)
-			 iterations=(1,2,2,4,4,4,4,8,8,8,8,8,8),	#第i个元素表示对于size为2^i的模型的迭代次数
-			 num_thread=10,								#线程数
-			 save_partial=False,						#是否每次迭代后保存模型
-			 ceil_cov=10,								#用于控制方差
-			 floor_cov=1e-2								#用于控制方差
-		     )
+ubm.EM_split(features_server=fs,                        #FeaturesServer对象
+             feature_list=ubm_list,
+	     distrib_nb=1024                            #期望得到的分布数量(必须为2的幂)
+             iterations=(1,2,2,4,4,4,4,8,8,8,8,8,8),    #第i个元素表示对于size为2^i的模型的迭代次数
+	     num_thread=10,                             #线程数
+	     save_partial=False,                        #是否每次迭代后保存模型
+	     ceil_cov=10,                               #用于控制方差
+	     floor_cov=1e-2                             #用于控制方差
+	     )
 训练固定数量的分布
-ubm.EM_uniform(cep					#一个ndarray，每一行是一种特征
-		       distrib_nb,
-			   iteration_min=3,
-			   iteration_max=10,
-			   llk_gain=0.01,
-			   do_init=True
-		       )
+ubm.EM_uniform(cep                #一个ndarray，每一行是一种特征
+               distrib_nb,
+	       iteration_min=3,
+	       iteration_max=10,
+	       llk_gain=0.01,
+	       do_init=True
+	       )
 训练Full covariance UBM（满方差UBM？）
 即在EM_split后增加：
 ubm.EM_convert_full(features_server,
-		            featureList,
-					distrib_nb,
-					iterations=2,		#EM迭代次数
-					num_thread=10
-		            )
+                    featureList,
+		    distrib_nb,
+		    iterations=2,    #EM迭代次数
+		    num_thread=10
+		    )
 
 i-vector提取器训练
 Total Variability models(TV)通过sidekit的FactorAnalyser提供的EM算法进行训练。
-训练需要一个StatServer（见未翻译的第一节）和一个UBM（Mixture对象）
+训练需要一个StatServer和一个UBM（Mixture对象）
 有三种实现：
 total_variability_raw 基本的无优化实现
 total_variability_single 单线程有优化实现
@@ -187,29 +188,29 @@ total_variability 并行有优化实现
 
 单线程有优化实现的使用：
 fa=sidekit.FactorAnalyser()
-fa.total_variability_single(stat_server_filename,	#list(str)，与StatServer关联的文件名
-		                    ubm,					#UBM模型
-							tv_rank,				#int，TV结果矩阵的秩，也即i-vector的大小
-							nb_iter,				#EM算法迭代次数
-							min_div=True,			#boolean，每次迭代是否包含一步“最小散度重估计”（没看懂）
-							tv_init=None,			#用于初始化训练的矩阵，None表示随机初始化
-							batch_size=300,			#每次处理的数量
-							save_init=False,		#是否保存初始模型
-							output_file_name=None	#输出文件名
-							)
+fa.total_variability_single(stat_server_filename,       #list(str)，与StatServer关联的文件名
+                            ubm,                        #UBM模型
+			    tv_rank,                    #int，TV结果矩阵的秩，也即i-vector的大小
+			    nb_iter,                    #EM算法迭代次数
+			    min_div=True,               #boolean，每次迭代是否包含一步“最小散度重估计”（没看懂）
+			    tv_init=None,               #用于初始化训练的矩阵，None表示随机初始化
+			    batch_size=300,             #每次处理的数量
+			    save_init=False,            #是否保存初始模型
+			    output_file_name=None       #输出文件名
+			    )
 并行有优化实现的使用：
 fa=sidekit.FactorAnalyser()
-fa.total_variability(stat_server_filename,	#list(str)，与StatServer关联的文件名
-		             ubm,					#UBM模型
-					 tv_rank,				#int，TV结果矩阵的秩，也即i-vector的大小
-					 nb_iter,				#EM算法迭代次数
-					 min_div=True,			#boolean，每次迭代是否包含一步“最小散度重估计”（没看懂）
-					 tv_init=None,			#用于初始化训练的矩阵，None表示随机初始化
-					 batch_size=300,		#每次处理的数量
-				     save_init=False,		#是否保存初始模型
-					 output_file_name=None,	#输出文件名
-					 num_thread=1			#线程数，建议5-10之间
-					 )
+fa.total_variability(stat_server_filename,         #list(str)，与StatServer关联的文件名
+                     ubm,                          #UBM模型
+		     tv_rank,                      #int，TV结果矩阵的秩，也即i-vector的大小
+		     nb_iter,                      #EM算法迭代次数
+		     min_div=True,                 #boolean，每次迭代是否包含一步“最小散度重估计”（没看懂）
+		     tv_init=None,                 #用于初始化训练的矩阵，None表示随机初始化
+		     batch_size=300,               #每次处理的数量
+		     save_init=False,              #是否保存初始模型
+		     output_file_name=None,        #输出文件名
+		     num_thread=1                  #线程数，建议5-10之间
+		     )
 
 
 i-vector提取
@@ -220,19 +221,19 @@ FactorAnalyser fa
 StatServer stat_server
 单线程样例：
 iv,iv_uncertainty=fa.extract_ivectors_single(ubm,
-		                                     stat_server,
-											 uncertainty=True
-											 )
+                                             stat_server,
+					     uncertainty=True
+					     )
 #当上面uncertainty=True时将返回一个矩阵，矩阵的每一行是与之对应的i-vector的不确定性矩阵的对角线
 #返回值iv是一个StatServer，在stat0中包含若干1，在stat1中包含若干i-vector
 
 单机多线程样例：
 #建议batch_size为几百
 iv,iv_uncertainty=fa.extract_ivectors(ubm,
-		                              stat_server_filename,	#包含一个StatServer的HDF5文件名
-									  prefix='',			#HDF5文件中统计数据集的前缀
-									  batch_size=300,		#每次处理的数量
-									  uncertainty=False,	#已提过
-									  num_thread=1			#线程数
-		                              )
+                                      stat_server_filename,       #包含一个StatServer的HDF5文件名
+				      prefix='',                  #HDF5文件中统计数据集的前缀
+				      batch_size=300,             #每次处理的数量
+				      uncertainty=False,          #已提过
+				      num_thread=1                #线程数
+				      )
 
