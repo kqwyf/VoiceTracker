@@ -7,7 +7,7 @@ from PyQt5.QtGui import QPalette, QPixmap, QBrush, QIcon
 
 # 回调函数
 def chooseModel():
-    name=QFileDialog.getOpenFileName(startWindow,"打开文件","")
+    name=QFileDialog.getOpenFileName(startWindow,"打开文件","","*.mod")
     print(name)
     if ''!=name[0]:
         startWindow.hide()
@@ -28,17 +28,26 @@ def showRecord():
     recordWindow.show()
 
 def chooseTrainingSample():
-    name=QFileDialog.getOpenFileName(startWindow,"打开文件","")
+    name=QFileDialog.getOpenFileNames(startWindow,"打开文件","","*.wav")
     print(name)
 
 def chooseTestingSample():
-    name=QFileDialog.getOpenFileName(startWindow,"打开文件","")
+    name=QFileDialog.getOpenFileName(startWindow,"打开文件","","*.wav")
     print(name)
 
 def showStart():
     modelWindow.hide()
-    recordWindow.hide()
     startWindow.show()
+
+def showRecognWindow():
+    mainWindow.hide()
+    recognWindow.show()
+
+def startRecognize():
+    chooseTestingSample()
+
+def startValidate():
+    chooseTestingSample()
 
 recording=False
 def startOrStopRecording():
@@ -72,7 +81,7 @@ mainWindow.setWindowTitle("VoiceTracker")
 mainWindow.resize(790,440)
 mainWindow.move(300,300)
 palette=QPalette()
-palette.setBrush(mainWindow.backgroundRole(), QBrush(QPixmap('operations.jpg')))
+palette.setBrush(mainWindow.backgroundRole(), QBrush(QPixmap('main.jpg')))
 mainWindow.setPalette(palette)
 mainWindow.closeEvent=lambda x:showStart()
 ## 创建语音库窗体
@@ -93,6 +102,15 @@ palette=QPalette()
 palette.setBrush(recordWindow.backgroundRole(), QBrush(QPixmap('record.jpg')))
 recordWindow.setPalette(palette)
 recordWindow.closeEvent=lambda x:showMain()
+## 创建识别窗体
+recognWindow=QWidget()
+recognWindow.setWindowTitle("VoiceTracker")
+recognWindow.resize(790,440)
+recognWindow.move(300,300)
+palette=QPalette()
+palette.setBrush(recognWindow.backgroundRole(), QBrush(QPixmap('recognize.jpg')))
+recognWindow.setPalette(palette)
+recognWindow.closeEvent=lambda x:showMain()
 
 # 创建透明效果
 def getOpacityEffectObj():
@@ -111,7 +129,7 @@ createBtn.clicked.connect(showMain)
 importBtn=QPushButton("", startWindow)
 importBtn.setGraphicsEffect(getOpacityEffectObj())
 importBtn.resize(135,135)
-importBtn.move(425,125)
+importBtn.move(420,125)
 importBtn.clicked.connect(chooseModel)
 ## 语音库按钮
 databaseBtn=QPushButton("", mainWindow)
@@ -129,20 +147,33 @@ sampleBtn.clicked.connect(chooseTrainingSample)
 recordBtn=QPushButton("", mainWindow)
 recordBtn.setGraphicsEffect(getOpacityEffectObj())
 recordBtn.resize(135,135)
-recordBtn.move(425,125)
+recordBtn.move(422,125)
 recordBtn.clicked.connect(showRecord)
 ## 识别样本按钮
 recognBtn=QPushButton("", mainWindow)
 recognBtn.setGraphicsEffect(getOpacityEffectObj())
 recognBtn.resize(135,135)
-recognBtn.move(615,125)
-recognBtn.clicked.connect(chooseTestingSample)
+recognBtn.move(608,125)
+recognBtn.clicked.connect(showRecognWindow)
 ## 开始/停止录音按钮
 recordingBtn=QPushButton("",recordWindow)
 recordingBtn.setStyleSheet("border-radius:30px;background:red;")
 recordingBtn.resize(60,60)
 recordingBtn.move(360,340)
 recordingBtn.clicked.connect(startOrStopRecording)
+## 话者识别按钮
+recognizeBtn=QPushButton("", recognWindow)
+recognizeBtn.setGraphicsEffect(getOpacityEffectObj())
+recognizeBtn.resize(135,135)
+recognizeBtn.move(235,125)
+recognizeBtn.clicked.connect(startRecognize)
+## 话者验证按钮
+validateBtn=QPushButton("", recognWindow)
+validateBtn.setGraphicsEffect(getOpacityEffectObj())
+validateBtn.resize(135,135)
+validateBtn.move(422,125)
+validateBtn.clicked.connect(startValidate)
+
 # 标签列表
 headers=['标签','性别','年龄','相似度']
 labelList=QTableWidget(modelWindow)
