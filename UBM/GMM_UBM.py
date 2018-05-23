@@ -80,21 +80,18 @@ class GMM_UBM:
 
         dim_num = F.shape[0]
         alpha = N / (N + tau)
-        if 'm' in config:
-            m_ML = F / np.tile(N, (dim_num, 1))
-            m = ubm_mu * np.tile(1 - alpha, (dim_num, 1)) + m_ML * np.tile(alpha, (dim_num, 1))
-            self.mu = m
+        m_ML = F / np.tile(N, (dim_num, 1))
+        m = ubm_mu * np.tile(1 - alpha, (dim_num, 1)) + m_ML * np.tile(alpha, (dim_num, 1))
+        self.mu = m
 
-        if 'v' in config:
-            v_ML = S / np.tile(N, (dim_num, 1))
-            v = (ubm_sigma + ubm_mu ** 2) * np.tile(1 - alpha, (dim_num, 1)) + v_ML * np.tile(alpha, (dim_num, 1)) - m ** 2
-            self.sigma = v
+        v_ML = S / np.tile(N, (dim_num, 1))
+        v = (ubm_sigma + ubm_mu ** 2) * np.tile(1 - alpha, (dim_num, 1)) + v_ML * np.tile(alpha, (dim_num, 1)) - m ** 2
+        self.sigma = v
 
-        if 'w' in config:
-            w_ML = N / sum(N)
-            w = ubm_w * (1 - alpha) + w_ML * alpha
-            w = w / sum(w)
-            self.w = w
+        w_ML = N / sum(N)
+        w = ubm_w * (1 - alpha) + w_ML * alpha
+        w = w / sum(w)
+        self.w = w
 
     def expectation(self, data, mu, sigma, w):
         post, llk = self.postprob(data, mu, sigma, w)
