@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="517607bb-ce5b-4162-a956-4b890f80dd32" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UBM/GMM_UBM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VoiceTracker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blank.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_breath_sound/UnvoicedIntervals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_breath_sound/detSinusouds.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_breath_sound/dftStft.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_breath_sound/getSSHVUV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_breath_sound/peakDetectCorrect.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_breath_sound/ssh.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.qml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.qmlc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_12.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_13.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_14.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_32.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_33.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_34.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_35.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_36.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_37.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/gmm_38.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ubm.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recognize.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/12_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/13_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/14_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/32_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/33_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/34_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/35_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/36_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/37_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/38_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/12_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/13_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/14_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/32_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/33_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/34_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/35_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/36_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/37_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_map/38_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/10_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/11_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/15_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/16_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/17_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/18_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/19_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/1_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/20_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/21_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/22_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/23_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/24_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/25_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/26_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/27_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/28_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/29_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/2_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/30_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/31_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/3_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/4_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/5_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/6_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/7_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/8_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA1.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA10.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA2.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA3.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA4.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA5.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA6.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA7.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA8.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_data_ubm/9_SA9.WAV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/easy-install.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/PKG-INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/SOURCES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/dependency_links.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/entry_points.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/not-zip-safe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/requires.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/__main__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/appdirs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/_cmd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/adapter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/cache.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/file_cache.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/redis_cache.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/filewrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/heuristics.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/serialize.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/wrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/ansi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/ansitowin32.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/initialise.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/win32.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/winterm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/misc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/shutil.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/tarfile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/locators.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/manifest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/markers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/metadata.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/resources.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/scripts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/t32.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/t64.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/util.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/w32.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/w64.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/wheel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distro.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_ihatexml.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_inputstream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_tokenizer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/_base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/datrie.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/py.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/alphabeticalattributes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/inject_meta_charset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/lint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/optionaltags.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/sanitizer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/whitespace.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/html5parser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/serializer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/genshi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/sax.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/dom.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/etree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/etree_lxml.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/dom.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/etree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/etree_lxml.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/genshi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/ipaddress.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/linklockfile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/mkdirlockfile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/pidlockfile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/sqlitelockfile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/symlinklockfile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/ordereddict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/__about__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/_compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/_structures.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/markers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/requirements.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/specifiers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/pkg_resources/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/bar.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/counter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/helpers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/spinner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/pyparsing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/re-vendor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/adapters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/api.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/auth.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/cacert.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/certs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/cookies.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/hooks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/big5freq.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/big5prober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/chardetect.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/chardistribution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/charsetgroupprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/charsetprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/codingstatemachine.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/cp949prober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/escprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/escsm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/eucjpprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/euckrfreq.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/euckrprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/euctwfreq.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/euctwprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/gb2312freq.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/gb2312prober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/hebrewprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/jisfreq.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/jpcntx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langbulgarianmodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langcyrillicmodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langgreekmodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langhebrewmodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langhungarianmodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langthaimodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/latin1prober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/mbcharsetprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/mbcsgroupprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/mbcssm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/sbcharsetprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/sbcsgroupprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/sjisprober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/universaldetector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/utf8prober.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/_collections.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/connection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/connectionpool.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/appengine.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/ntlmpool.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/pyopenssl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/socks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/fields.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/filepost.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/ordered_dict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/six.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/poolmanager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/response.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/connection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/request.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/response.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/retry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/ssl_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/timeout.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/url.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/sessions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/status_codes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/structures.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/retrying.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/six.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/labels.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/mklabels.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/x_user_defined.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/basecommand.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/baseparser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/cmdoptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/check.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/completion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/download.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/freeze.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/hash.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/help.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/install.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/show.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/uninstall.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/commands/wheel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/compat/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/compat/dictconfig.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/download.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/locations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/models/index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/operations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/operations/check.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/operations/freeze.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/pep425tags.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/req/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/req/req_file.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/req/req_install.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/req/req_set.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/req/req_uninstall.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/status_codes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/appdirs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/build.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/deprecation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/encoding.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/filesystem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/glibc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/hashes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/logging.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/outdated.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/packaging.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/setuptools_build.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/utils/ui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/bazaar.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/git.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/mercurial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/subversion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/wheel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/setuptools-28.8.0-py3.6.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/setuptools.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/tcl8.6/init.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/Activate.ps1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_asyncio.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_bz2.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_ctypes.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_ctypes_test.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_decimal.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_elementtree.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_hashlib.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_lzma.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_msi.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_multiprocessing.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_overlapped.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_socket.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_sqlite3.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_ssl.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_testbuffer.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_testcapi.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_testconsole.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_testimportmultiple.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_testmultiphase.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/_tkinter.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/activate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/activate.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-console-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-datetime-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-debug-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-errorhandling-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-file-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-file-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-file-l2-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-handle-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-heap-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-interlocked-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-libraryloader-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-localization-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-memory-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-namedpipe-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-processenvironment-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-processthreads-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-processthreads-l1-1-1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-profile-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-rtlsupport-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-string-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-synch-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-synch-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-sysinfo-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-timezone-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-core-util-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-conio-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-convert-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-environment-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-filesystem-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-heap-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-locale-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-math-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-multibyte-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-private-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-process-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-runtime-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-stdio-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-string-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-time-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/api-ms-win-crt-utility-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/concrt140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/deactivate.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-3.6-script.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-3.6.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-script.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/msvcp140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip-script.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3-script.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.6-script.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.6.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pyexpat.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/python.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/python3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/python36.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pythoncom36.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pythonw.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pywintypes36.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/select.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/sqlite3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/tcl86t.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/tk86t.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/ucrtbase.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/unicodedata.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/vccorlib140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/vcomp140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/vcruntime140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/winsound.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/xlwings32.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/xlwings64.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/pyvenv.cfg" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-506">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GMM_UBM.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UBM/GMM_UBM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/UBM/GMM_UBM.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="VoiceTracker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VoiceTracker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VoiceTracker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VoiceTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="UBM" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VoiceTracker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="517607bb-ce5b-4162-a956-4b890f80dd32" name="Default" comment="" />
+      <created>1527042154451</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1527042154451</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.329653" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1518">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UBM/GMM_UBM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1518">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/record.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recognize.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-506">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UBM/GMM_UBM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="88" column="8" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
