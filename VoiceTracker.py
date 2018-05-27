@@ -2,12 +2,12 @@
 #encoding: utf-8
 
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QTableWidget, QTableWidgetItem, QGraphicsOpacityEffect, QPushButton, QLabel, QFileDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QTableWidget, QMessageBox, QLineEdit, QTableWidgetItem, QGraphicsOpacityEffect, QPushButton, QLabel, QFileDialog
 from PyQt5.QtGui import QPalette, QPixmap, QBrush, QIcon
 
 # 回调函数
 def chooseModel():
-    name=QFileDialog.getOpenFileName(startWindow,"打开文件","","*.mod")
+    name=QFileDialog.getOpenFileName(startWindow,"打开文件","","*.npy")
     print(name)
     if ''!=name[0]:
         startWindow.hide()
@@ -48,6 +48,10 @@ def startRecognize():
 
 def startValidate():
     chooseTestingSample()
+
+def startValidateProcess():
+    QMessageBox.information(modelWindow,"识别结果","选定语音对于被测者张三具有98.3%的相似度。可以认为该语音属于张三（男，18岁）。")
+
 
 recording=False
 def startOrStopRecording():
@@ -113,45 +117,45 @@ recognWindow.setPalette(palette)
 recognWindow.closeEvent=lambda x:showMain()
 
 # 创建透明效果
-def getOpacityEffectObj():
+def getOpacityEffectObj(opacity):
     opacityEffect=QGraphicsOpacityEffect()
-    opacityEffect.setOpacity(0.3)
+    opacityEffect.setOpacity(opacity)
     return opacityEffect
 
 # 创建并添加各个控件
 ## 新建模型按钮
 createBtn=QPushButton("", startWindow)
-createBtn.setGraphicsEffect(getOpacityEffectObj())
+createBtn.setGraphicsEffect(getOpacityEffectObj(0.3))
 createBtn.resize(135,135)
 createBtn.move(235,125)
 createBtn.clicked.connect(showMain)
 ## 导入模型按钮
 importBtn=QPushButton("", startWindow)
-importBtn.setGraphicsEffect(getOpacityEffectObj())
+importBtn.setGraphicsEffect(getOpacityEffectObj(0.3))
 importBtn.resize(135,135)
 importBtn.move(420,125)
 importBtn.clicked.connect(chooseModel)
 ## 语音库按钮
 databaseBtn=QPushButton("", mainWindow)
-databaseBtn.setGraphicsEffect(getOpacityEffectObj())
+databaseBtn.setGraphicsEffect(getOpacityEffectObj(0.3))
 databaseBtn.resize(135,135)
 databaseBtn.move(48,125)
 databaseBtn.clicked.connect(showModel)
 ## 添加文件按钮
 sampleBtn=QPushButton("", mainWindow)
-sampleBtn.setGraphicsEffect(getOpacityEffectObj())
+sampleBtn.setGraphicsEffect(getOpacityEffectObj(0.3))
 sampleBtn.resize(135,135)
 sampleBtn.move(235,125)
 sampleBtn.clicked.connect(chooseTrainingSample)
 ## 现场录音按钮
 recordBtn=QPushButton("", mainWindow)
-recordBtn.setGraphicsEffect(getOpacityEffectObj())
+recordBtn.setGraphicsEffect(getOpacityEffectObj(0.3))
 recordBtn.resize(135,135)
 recordBtn.move(422,125)
 recordBtn.clicked.connect(showRecord)
 ## 识别样本按钮
 recognBtn=QPushButton("", mainWindow)
-recognBtn.setGraphicsEffect(getOpacityEffectObj())
+recognBtn.setGraphicsEffect(getOpacityEffectObj(0.3))
 recognBtn.resize(135,135)
 recognBtn.move(608,125)
 recognBtn.clicked.connect(showRecognWindow)
@@ -163,22 +167,35 @@ recordingBtn.move(360,340)
 recordingBtn.clicked.connect(startOrStopRecording)
 ## 话者识别按钮
 recognizeBtn=QPushButton("", recognWindow)
-recognizeBtn.setGraphicsEffect(getOpacityEffectObj())
+recognizeBtn.setGraphicsEffect(getOpacityEffectObj(0.3))
 recognizeBtn.resize(135,135)
 recognizeBtn.move(235,125)
 recognizeBtn.clicked.connect(startRecognize)
 ## 话者验证按钮
 validateBtn=QPushButton("", recognWindow)
-validateBtn.setGraphicsEffect(getOpacityEffectObj())
+validateBtn.setGraphicsEffect(getOpacityEffectObj(0.3))
 validateBtn.resize(135,135)
 validateBtn.move(422,125)
 validateBtn.clicked.connect(startValidate)
+## 开始验证按钮
+startValidateBtn=QPushButton("开始验证", modelWindow)
+#startValidateBtn.setGraphicsEffect(getOpacityEffectObj(0.7))
+startValidateBtn.setStyleSheet("background:gray;")
+startValidateBtn.resize(135,24)
+startValidateBtn.move(600,400)
+startValidateBtn.clicked.connect(startValidateProcess)
+
+## 模型搜索框
+searchField=QLineEdit(modelWindow)
+searchField.setStyleSheet("background:rgba(255,255,255,20%);color:rgba(255,255,255,50%);")
+searchField.resize(200,24)
+searchField.move(20,20)
 
 # 标签列表
-headers=['标签','性别','年龄','相似度']
+headers=['标签','性别','年龄','备注']
 labelList=QTableWidget(modelWindow)
-labelList.resize(750,400)
-labelList.move(20,20)
+labelList.resize(750,340)
+labelList.move(20,56)
 labelList.setRowCount(3)
 labelList.setColumnCount(len(headers))
 labelList.setStyleSheet("background:rgba(255,255,255,20%);border:white;color:white")
