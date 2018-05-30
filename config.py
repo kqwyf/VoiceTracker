@@ -4,3 +4,4 @@ class CONFIG:
         self.feature_size = 24
         self.sampling_frequency = 16000
         self.iterations = (1, 2, 2, 4, 4, 4, 4, 8, 8, 8, 8)
+        self.tau = 15

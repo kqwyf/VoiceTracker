@@ -67,7 +67,7 @@ class GMM_UBM:
         featureDict['w'] = self.w
         np.save(filename, featureDict)
 
-    def map_adapt(self, data, ubm, tau=15, config = 'mvw'):
+    def map_adapt(self, data, ubm, tau=15):
         N = 0
         F = 0
         S = 0

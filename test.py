@@ -6,12 +6,12 @@ import os
 config = CONFIG()
 
 
-def get_ubm(train_data):
+def get_ubm(ubm_data_dir):
     ubm = GMM_UBM()
     if os.path.exists(r'.\models\ubm.npy'):
         ubm.read_feature(r'.\models\ubm.npy')
     else:
-        features = get_feature(train_data)
+        features = get_feature(ubm_data_dir)
         data = []
         for value in features.values():
             for i in value:
@@ -28,11 +28,11 @@ def adapt(ubm, train_dir):
         data = []
         for d in features[key]:
             data.append(d)
-        gmm.map_adapt(data, ubm)
+        gmm.map_adapt(data, ubm, config.tau)
         gmm.save_feature(r'.\models\gmm_%s' % key)
 
 
-def score(ubm, models, test_dir):
+def score(ubm, models, model_names, test_dir):
     features = get_feature(test_dir, True)
     test_features = []
     labels = []
@@ -40,34 +40,40 @@ def score(ubm, models, test_dir):
         for j in features[i]:
             test_features.append(j)
             labels.append(i)
+
+    model_num = len(models)
+    test_num = len(test_features)
     trials = []
-    for i in range(len(models)):
-        for j in range(len(test_features)):
+    for i in range(model_num):
+        for j in range(test_num):
             trials.append([i, j])   # i号模型, j号测试文件
     trials = np.array(trials)
     gmm = GMM_UBM()
     llr = gmm.score_gmm_trials(models, test_features, trials, ubm)
 
-    length = len(test_features)
     trials_num = trials.shape[0]
-    ans = [0] * length
-    max_value = [-1e5] * length
+    ans = [0] * test_num
+    max_value = [-1e5] * test_num
     for i in range(trials_num):
         if llr[i][0] > max_value[trials[i, 1]]:
             max_value[trials[i, 1]] = llr[i][0]
-            ans[trials[i, 1]] = labels[trials[i, 0]]
+            ans[trials[i, 1]] = model_names[trials[i, 0]]
+
+    equal_num = sum([labels[i] == ans[i] for i in range(test_num)])
     print(labels)
     print(ans)
-    print(max_value)
+    print(equal_num, test_num)
 
 
 if __name__ == '__main__':
     ubm = get_ubm(r'.\train_data_ubm')
     adapt(ubm, r'.\train_data_map')
     models = []
+    model_names = []
     for file in os.listdir(r'.\models'):
         if file.startswith('gmm'):
             gmm = GMM_UBM()
             gmm.read_feature(os.path.join(r'.\models', file))
             models.append(gmm)
-    score(ubm, models, r'.\test_data')
+            model_names.append(file[4: -4])
+    score(ubm, models, model_names, r'.\test_data')

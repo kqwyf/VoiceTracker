@@ -32,17 +32,19 @@ def get_unvoiced_intervals(x, fs):
     return y
 
 
-def get_feature(train_dir, extract_breath=False):
+def get_feature(wav_dir, extract_breath=False):
     config = CONFIG()
     data = {}
-    for file in os.listdir(train_dir):
-        if file.endswith('.WAV'):
-            id = file.split('_')[0]
-            y, sr = librosa.load(os.path.join(train_dir, file), config.sampling_frequency)
-            if extract_breath:
-                y = get_unvoiced_intervals(y, sr)
-            mfcc = librosa.feature.mfcc(y, sr, n_mfcc=config.feature_size)
-            if id not in data.keys():
-                data[id] = []
-            data[id].append(mfcc)
+    for d in os.listdir(wav_dir):
+        speaker_dir = os.path.join(wav_dir, d)
+        if not os.path.isdir(speaker_dir):
+            continue
+        data[d] = []
+        for file in os.listdir(speaker_dir):
+            if file.endswith('.WAV'):
+                y, sr = librosa.load(os.path.join(speaker_dir, file), config.sampling_frequency)
+                if extract_breath:
+                    y = get_unvoiced_intervals(y, sr)
+                mfcc = librosa.feature.mfcc(y, sr, n_mfcc=config.feature_size)
+                data[d].append(mfcc)
     return data

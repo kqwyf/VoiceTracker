@@ -1,6 +1,6 @@
 venv/
-__pycache__/
 test_data/
 train_data_ubm/
 train_data_map/
 .idea/
+*.pyc
